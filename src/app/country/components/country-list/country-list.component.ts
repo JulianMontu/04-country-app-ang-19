@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { RESTCountry } from '../../interfaces/rest-country.interface';
+import { Country } from '../../interfaces/country.interface';
 
 @Component({
   selector: 'country-list',
@@ -6,4 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './country-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CountryListComponent { }
+export class CountryListComponent { 
+  countries = input.required<Country[]>();
+}
