@@ -2,8 +2,10 @@
   [placeHolder]="'Buscar por país'"
   (value)="query.set($event)"
 />
-@if (countryResources.error()) {
-<h3>{{ countryResources.error() }}</h3>
-} @if (countryResources.hasValue()) {
-<country-list [countries]="countryResources.value()!" />
-}
+
+<country-list
+  [countries]="countryResources.value()! ?? []"
+  [errorMessage]="countryResources.error()"
+  [isLoading]="countryResources.isLoading()"
+  [isEmpty]="countryResources.value()?.length === 0"
+/>
