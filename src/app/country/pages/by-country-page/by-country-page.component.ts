@@ -9,7 +9,6 @@ import { rxResource } from '@angular/core/rxjs-interop';
   selector: 'app-by-country-page',
   imports: [SearchInputComponent, CountryListComponent],
   templateUrl: './by-country-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ByCountryPageComponent {
   private countryService = inject(CountryService);
