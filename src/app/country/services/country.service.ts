@@ -35,14 +35,11 @@ export class CountryService {
   searchByCountry(query: string) {
     query = query.trim().toLowerCase();
     if (this.queryCacheCountry.has(query)) {
-      return of(this.queryCacheCountry.get(query) ?? []).pipe(
-        delay(1000)
-      );
+      return of(this.queryCacheCountry.get(query) ?? []);
     }
     return this.http.get<RESTCountry[]>(`${API_URL}/name/${query}`).pipe(
       map(CountryMapper.mapToCountries),
       tap(countries => this.queryCacheCountry.set(query, countries)),
-      delay(1000),
       catchError((error) => {
         return throwError(() => new Error(`no se pudo obtener paises con ese query: ${query}`));
       })
